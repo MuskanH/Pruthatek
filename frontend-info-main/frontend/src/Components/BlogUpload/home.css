@@ -1,0 +1,25 @@
+.blog-upload-home table
+{
+    width: 90vw;
+    margin: 4vw auto;
+    text-align: center;
+    font-size: 1.1vw;
+}
+.blog-upload-home table,
+.blog-upload-home th,
+.blog-upload-home td
+{
+  /* border-bottom: 1px solid black; */
+  border-collapse: collapse;
+}
+.blog-upload-home th,
+.blog-upload-home td
+{
+    padding: 1vw;
+}
+.blog-upload-home table tr:nth-child(even)
+{
+    background-color: rgba(30, 143, 255, 0.651);
+    border-bottom: 1px solid black;
+    color: white;
+}

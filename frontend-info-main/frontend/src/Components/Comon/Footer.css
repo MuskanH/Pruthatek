@@ -1,0 +1,93 @@
+.footer
+{
+    /* height: 25vw; */
+    /* padding: 3vw; */
+    /* background-color: black; */
+    /* color: white; */
+    margin: 2vw 7vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    /* align-items: center; */
+}
+.footer-links-title
+{
+    font-size: 1vw;
+}
+.footer a
+{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1vw;
+    display: block;
+    transition: color 400ms;
+    margin: 1.3vw 0vw;
+}
+.footer a:hover
+{
+    color: brown;
+}
+.company-logo
+{
+    font-size: 3vw;
+    color: gold;
+}
+.face
+{
+    transition: transform 1s;
+    font-size: 5vw;
+}
+.face:hover
+{
+    transform: translateY(-5px);
+    color: blue;
+}
+.social-media
+{
+    width: 16vw;
+}
+.social-media-icons
+{
+    margin-top: 2vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: 1.7vw;
+}
+/* .About-links
+{
+    border-left: 3.8px dotted green;
+    border-right: 3.8px dotted green;
+    padding: 0vw 10vw;
+    padding-bottom: 1vw;
+} */
+.fa
+{
+    transition: transform 600ms;
+}
+.footer .fa:hover
+{
+    cursor: pointer;
+    transform: translateY(-5px);
+    color: rgb(0, 38, 255);
+}
+.footer .social-media .social-media-icons a
+{
+    text-decoration: none;
+    color: white;
+    margin: 0vw;
+}
+.footer .insta:hover
+{
+    color: rgb(255, 0, 200);
+}
+.footer .ytb:hover
+{
+    color: red;
+}
+.rights
+{
+    width: 20vw;
+    margin-top: 3vw;
+    font-size: 1.1vw;
+}

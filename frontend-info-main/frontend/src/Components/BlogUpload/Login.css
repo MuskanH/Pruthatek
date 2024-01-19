@@ -1,0 +1,65 @@
+.login-title
+{
+    text-align: center;
+}
+.box
+{
+    width: 30vw;
+    padding: 4vw;
+    background: rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin: 3vw auto;
+}
+.box h2{
+    margin: 0 0 2vw;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+}
+.box .input-box{
+    position: relative;
+}
+.box .input-box input{
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+}
+.box .input-box label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    letter-spacing: 1px;
+    padding: 10px 0px;
+    font-size: 16px;
+    color: #fff;
+    transition: .5s;
+}
+.box .input-box input:focus ~ label,
+.box .input-box input:valid ~ label{
+    top: -18px;
+    left: 0px;
+    color: #03a9f4;
+    font-size: 12px;
+}
+.box button[type="submit"]{
+    width: 100%;
+    font-size: 1.1vw;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #227be3;
+    padding: 1vw 1.5vw;
+    margin-top: 1.4vw;
+    border-radius: 5px;
+    cursor:pointer;
+}

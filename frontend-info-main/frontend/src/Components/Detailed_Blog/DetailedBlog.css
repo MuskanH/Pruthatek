@@ -1,0 +1,98 @@
+.detailed-blog
+{
+    width: 50vw;
+    margin: 3vw auto;
+}
+.detailed-blog .blog-title
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2vw;
+}
+.detailed-blog img
+{
+    width: 100%;
+    height: 34vw;
+}
+.detailed-blog .author-details
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw 0vw;
+}
+.detailed-blog .author-details p
+{
+    font-size: 0.96vw;
+}
+.detailed-blog .avtar
+{
+    height: 5vw;
+    width: 5vw;
+    border-radius: 50%;
+}
+.detailed-blog .blog-description
+{
+    font-size: 1.2vw;
+    word-spacing: 0.4vw;
+}
+.react-player
+{
+    height: 13vw;
+    width: 22vw;
+    position: sticky;
+    left: 77vw;
+    bottom: 2vw;
+}
+.react-player div iframe
+{
+    border-radius: 10px;
+}
+@media only screen and (max-width: 768px)
+{
+    .detailed-blog
+    {
+        width: 70vw;
+    }
+    .detailed-blog .blog-title
+    {
+        font-size: 2.6vw;
+    }
+    .detailed-blog .avtar
+    {
+        height: 7vw;
+        width: 7vw;
+    }
+    .detailed-blog .author-details p
+    {
+        margin-top: 0.6vw;
+        font-size: 1.6vw;
+    }
+    .detailed-blog .blog-description
+    {
+        font-size: 1.8vw;
+    }
+}
+@media only screen and (max-width: 500px)
+{
+    .detailed-blog
+    {
+        width: 80vw;
+    }
+    .detailed-blog .blog-title
+    {
+        font-size: 3vw;
+    }
+    .detailed-blog .avtar
+    {
+        height: 9vw;
+        width: 9vw;
+    }
+    .detailed-blog .author-details p
+    {
+        margin-top: 1.3vw;
+        font-size: 2vw;
+    }
+    .detailed-blog .blog-description
+    {
+        font-size: 2.4vw;
+    }
+}

@@ -1,0 +1,28 @@
+[
+    {
+        "select": "Cars",
+        "submenu": true,
+        "sublinks": [{"Head": "Cars", "sublink":[{"name": "Blog one"}]}]
+    },
+    {
+        "select": "Education"
+    },
+    {
+        "select": "Money"
+    },
+    {
+        "select": "News & Culture"
+    },
+    {
+        "select": "Others"
+    },
+    {
+        "select": "Science"
+    },
+    {
+        "select": "Tech"
+    },
+    {
+        "select": "Wellness"
+    }
+]

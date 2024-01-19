@@ -1,0 +1,80 @@
+.latest-stories
+{
+    width: 44vw;
+}
+.latest-title
+{
+    font-size: 1.5vw;
+    font-weight: 100;
+}
+.latest-card
+{
+    margin-top: 2vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.latest-card:hover .latest-title
+{
+    color: brown;
+}
+.latest-card-img
+{
+    height: auto;
+    width: 10vw;
+}
+.latest-card-text-content h3
+{
+    margin-top: 0px;
+    margin-bottom: 0.1vw;
+    font-size: 1.4vw;
+}
+.latest-card-text-content p
+{
+    font-size: 1.1vw;
+}
+.latest-card-text-content
+{
+    width: 25vw;
+}
+.last-update
+{
+    font-size: 1vw;
+    margin-top: 0px;
+}
+@media only screen and (max-width: 500px)
+{
+    .latest-title
+    {
+        font-size: 3vw;
+        margin-top: 10vw;
+    }
+    .latest-stories
+    {
+        width: 100%;
+    }
+    .latest-card
+    {
+        margin-top: 3vw;
+    }
+    .latest-card img
+    {
+        width: 25vw;
+    }
+    .latest-card-text-content
+    {
+        width: 40vw;
+    }
+    .latest-card-text-content h3
+    {
+        font-size: 2.6vw;
+    }
+    .latest-card-text-content p
+    {
+        font-size: 2.4vw;
+    }
+    .last-update
+    {
+        font-size: 2.3vw;
+    }
+}

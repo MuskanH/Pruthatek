@@ -1,0 +1,60 @@
+.category-third-sm-card
+{
+    width: 41.4vw;
+    margin-top: 2vw;
+    box-shadow: 0px 0px 20px gray;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.category-third-sm-card img
+{
+    height: 9vw;
+    width: 10vw;
+}
+.category-third-sm-card div 
+{
+    width: 20vw;
+}
+.category-third-sm-card div h3
+{
+    font-size: 1.2vw;
+}
+.category-third-sm-card div p
+{
+    font-size: 1vw;
+}
+.category-third-sm-card .ago
+{
+    font-size: 0.9vw;
+    padding-right: 2vw;
+    padding-top: 0.5vw;
+}
+@media only screen and (max-width: 500px)
+{
+    .category-third-sm-card
+    {
+        width: 100%;
+    }
+    .category-third-sm-card img
+    {
+        width: 23vw;
+        height: 20vw;
+    }
+    .category-third-sm-card div 
+    {
+        width: 38vw;
+    }
+    .category-third-sm-card div h3
+    {
+        font-size: 2vw;
+    }
+    .category-third-sm-card div p
+    {
+        font-size: 1.8vw;
+    }
+    .category-third-sm-card .ago
+    {
+        font-size: 1.7vw;
+    }
+}

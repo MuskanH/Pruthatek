@@ -1,0 +1,122 @@
+/* body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+} */
+
+.border-gradient-orange:hover {
+	border-width: 2px;
+	border-style: solid;
+	border-color: transparent;
+	background: linear-gradient(#000, #000) padding-box,
+		linear-gradient(to right, #f05225, #eea820) border-box;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	border-radius: 2px;
+	transition-duration: 300ms;
+	transition-property: all;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.border-gradient-box-9 {
+	border-width: 1px;
+	border-style: solid;
+	border-color: transparent;
+	background: linear-gradient(#000, #000) padding-box,
+		linear-gradient(302.76deg, #d400a5 54.81%, #1f7ecb 85.95%, #2ed6e3 114.01%) border-box;
+}
+
+.text-gradient {
+	background: -webkit-linear-gradient(#f05225, #eea820);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.text-gradient-2 {
+	background: -webkit-linear-gradient(#0da1da, #5db98e);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.text-gradient-3 {
+	/* background: -webkit-linear-linear-gradient(#0038ff, #3a86ff, #6dccff); */
+	background: -webkit-linear-gradient(#0038ff, #3a86ff, #6dccff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.noscrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.square {
+	animation: rotate 10s linear infinite;
+}
+.square-2 {
+	animation: rotate-1 10s linear infinite;
+  }
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes rotate-1 {
+	from {
+	  transform: rotate(360deg);
+	}
+  
+	to {
+	  transform: rotate(0deg);
+	}
+  }
+/* .square1{
+	animation: rotate1 10s linear infinite;
+
+}
+@keyframes rotate1 {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(90deg);
+	}
+} */
+
+.glassmorphism {
+	background: #3a3a3a33;
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+}
+
+.glassmorphism-2 {
+	background: rgba(217, 217, 217, 0.3);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
+.loginInputs:focus~.loginLabels,
+.loginInputs:not(:focus):valid~.loginLabels {
+	top: -15px;
+	bottom: 0px;
+	left: 0px;
+	font-size: 11px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
