@@ -1,8 +1,6 @@
 [
     {
-        "select": "Cars",
-        "submenu": true,
-        "sublinks": [{"Head": "Cars", "sublink":[{"name": "Blog one"}]}]
+        "select": "Cars"
     },
     {
         "select": "Education"

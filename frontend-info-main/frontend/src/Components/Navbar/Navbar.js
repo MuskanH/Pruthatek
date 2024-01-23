@@ -1,11 +1,108 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { CgClose, CgList } from "react-icons/cg";
 import list from "../BlogUpload/list.json";
-
+import axios from "axios";
+import "./Nav.css"
+// import links from "./links.json"
 
 const Navbar = ({ setTheme, theme, props }) => {
+	const [blogData, setBlogData] = useState([]);
+
+	// togglenav
+	
+
+	const [targetVisibility, setTargetVisibility] = useState(false);
+	const [SelectedLinks, setSelectedLinks] = useState("");
+	let selectedLinkIndex = useRef([]);
+	let HeadersInLinks = useRef([]);
+
+	
+
+	function mainLinkFunctions(e) {
+
+
+		let ad = document.querySelector("#selc");
+	 
+		let j = e.target.innerHTML;
+
+		if (j == "Cars" || j == "Education" || j == "Money" || j == "News/Culture" || j == "Science" || j == "Tech" || j =="Wellness" || j == "Home" || j =="Other") {
+
+
+			setTargetVisibility(true);
+			setSelectedLinks(j);
+			
+
+		}
+		else {
+			setSelectedLinks('');
+			setTargetVisibility(false);
+		}
+	}
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  try {
+			const response = await axios.get(
+			  process.env.REACT_APP_SERVER + `/blog/${HeadersInLinks.current}`
+			);
+			const fetchedBlogData = response.data;
+			console.log(fetchedBlogData)
+			setBlogData(fetchedBlogData);
+		  } catch (error) {
+			console.error("Error fetching blog data:", error);
+		  }
+		};
+	
+		fetchData();
+	  }, []);
+
+	  function mainHeaderFunctions(a) {
+	 
+		let tempObjectStore;
+
+		links.map((element, index) => {
+
+			if (element.select == a) {
+	 
+				HeadersInLinks.current = element.subl.Head;
+				tempObjectStore = element.subl.slink;
+			}
+			else {
+
+			}
+
+		})
+
+		selectedLinkIndex.current = tempObjectStore
+
+	}
+
+
+	// togglenav end
+
+
 
 	const [search, setSearch] = useState('');
+	const [results, setResults] = useState([]);
+
+   const fetchData = (value) =>{
+	fetch("https://jsonplaceholder.typicode.com/users")
+	.then((response) => response.json())
+	.then((json)=>{
+		const filteredResults = json.filter((user)=>{
+			return (
+				value && user && user.name && user.name.toLowerCase().includes(value)
+			);
+		});
+		setResults(filteredResults);
+	});
+   };
+
+   const handleChange = (value)=>{
+	   setSearch(value);
+	   fetchData(value);
+   }
+
 	const navbarLinks = [
 		["Cars", "#"],
 		["Education", "#"],
@@ -18,101 +115,134 @@ const Navbar = ({ setTheme, theme, props }) => {
 		["Other", "#"],
 	];
 
-	
-
-
-	const [targetVisibility, setTargetVisibility] = useState({});
-
-	const handleTriggerClick = (index) => {
-		setTargetVisibility(prevVisibility => ({
-		  ...prevVisibility,
-		  [index]: !prevVisibility[index] // Toggle visibility for the clicked index
-		}));
-	  };
-
-	const links = [
+	const links = 
+	[
 		{
 			select: "Cars",
 			submenu: true,
-			sublinks: [{ Head: "Cars", sublink: [
-				{ name: "Blog one", link: "/Cars" },
-			    { name: "Blog twothreefour", link: "/Cars" },
-				{ name: "Blog twofivesix", link: "/Cars" },
-				{ name: "Blog twoseven", link: "/Cars" },
-				{ name: "Blog twoeightnine", link: "/Cars" },
-				{ name: "Blog twoeleven", link: "/Cars" },
-				{ name: "Blog two", link: "/Cars" },
-				{ name: "Blog two", link: "/Cars" },
-				{ name: "Blog two", link: "/Cars" },
-				{ name: "Blog two", link: "/Cars" },
-				
-			
-			] }]
+			subl:
+			{
+				Head: "Cars",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+				]
+			}
 		},
 
 		{
 			select: "Education",
 			submenu: true,
-			sublinks: [{ Head: "Education", sublink: [
-
-				{ name: "Blog one", link: "/Education" },
-			    { name: "Blog twothreefour", link: "/Education" },
-				{ name: "Blog twofivesix", link: "/Education" },
-				{ name: "Blog twoseven", link: "/Education" },
-				{ name: "Blog twoeightnine", link: "/Education" },
-				{ name: "Blog twoeleven", link: "/Education" },
-				{ name: "Blog two", link: "/Education" },
-				{ name: "Blog two", link: "/Education" },
-				{ name: "Blog two", link: "/Education" },
-				{ name: "Blog two", link: "/Education" },
-			] }]
+			subl:
+			{
+				Head: "Education",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					{ name: "Blog twothreefour", link: "/Cars" },
+					{ name: "Blog twofivesix", link: "/Cars" },
+					{ name: "Blog twoseven", link: "/Cars" },
+					{ name: "Blog twoeightnine", link: "/Cars" },
+					{ name: "Blog twoeleven", link: "/Cars" },
+					{ name: "Blog two ", link: "/Cars" },
+					{ name: "Blog two ", link: "/Cars" },
+					{ name: "Blog two ", link: "/Cars" },
+					{ name: "Blog two", link: "/Cars" },
+				]
+			}
 		},
 
 		{
 			select: "Money",
 			submenu: true,
-			sublinks: [{ Head: "Money", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "Money",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 
 		{
-			select: "News & Culture",
+			select: "News/Culture",
 			submenu: true,
-			sublinks: [{ Head: "News & Culture", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "News/Culture",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 		{
 			select: "Science",
 			submenu: true,
-			sublinks: [{ Head: "Science", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "Science",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 		{
 			select: "Tech",
 			submenu: true,
-			sublinks: [{ Head: "Tech", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "Tech",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 		{
-			select: "Wellnes",
+			select: "Wellness",
 			submenu: true,
-			sublinks: [{ Head: "Wellness", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "Wellness",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 		{
 			select: "Home",
 			submenu: true,
-			sublinks: [{ Head: "Home", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "Home",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 		{
 			select: "Other",
 			submenu: true,
-			sublinks: [{ Head: "Other", sublink: [{ name: "Blog one" }] }]
+			subl:
+			{
+				Head: "Other",
+				slink: [
+					{ name: "Blog one", link: "/Cars" },
+					
+				]
+			}
 		},
 	]
 
     
-
 	return (
-		<div className="lg:px-4 sticky top-0 bg-white  z-50 px-4 flex items-center justify-between  w-full dark:bg-[#101010]  py-4" >
+		<div className="lg:px-4 sticky top-0 bg-white z-50 px-4 flex items-center justify-between  w-full dark:bg-[#101010]  py-4" >
 			<div className="flex  items-center  gap-x-[10rem] gap-3">
 				<a href="/" >
-					<div className="flex flex-row justify-start items-center">
+					<div className="flex flex-row justify-start -mr-[60px] items-center">
 						<div className="w-40 ">
 							<img src="/static/img/Pruthateknew.png" alt="" />
 						</div>
@@ -122,8 +252,8 @@ const Navbar = ({ setTheme, theme, props }) => {
 					</div>
 				</a>
 
-				<ul className="lg:flex flex-row  justify-center  items-center gap-x-10  whitespace-nowrap noscrollbar hidden">
-					{links.map((link, index) => (
+				<ul className="lg:flex flex-row  gap-x-10  whitespace-nowrap noscrollbar hidden">
+					{/* {links.map((link, index) => (
 						<div key={index} onClick={() => handleTriggerClick(index)} className="trigger">
 							
 							<div
@@ -141,7 +271,7 @@ const Navbar = ({ setTheme, theme, props }) => {
 									<div className="pl-[374px]">	
 									{link.sublinks.map((mysublinks) => (
 									<div>
-										<h1 className="text-[#f05225] text-[20px] py-4">{mysublinks.Head}</h1>
+										<a href={mysublinks.Head} className="text-[#f05225] text-[18px]  py-4">{mysublinks.Head}</a>
 										<div className="grid grid-cols-4  gap-y-4 justify-between">
 										{mysublinks.sublink.map((slink) => (
 											
@@ -157,21 +287,96 @@ const Navbar = ({ setTheme, theme, props }) => {
 								</div>
 							
 						</div>
-					))}
+					))} */}
+
+					
+						{links.map((link) => {
+						return (
+							<>
+
+								<div onClick={(e) => mainLinkFunctions(e)}  className="">
+									<div id="parsele"
+										className="text-[16px] cursor-pointer relative after:content-[''] after:w-0 after:h-[2px] after:absolute after:-bottom-[5px] after:left-0 after:bg-gradient-to-r after:from-[#f05225] after:to-[#eea820] after:transition-all after:duration-300 hover:after:w-full">
+										{link.select}
+									</div>
+
+
+									<div id="selc" className={`${targetVisibility ? "" : "hid"}`}>
+										<div className="fixed top-16 left-0 right-0 bottom-0" >
+
+											<div className="text-black dark:text-white bg-white dark:bg-[#101010] border-2 border-x-transparent border-b-transparent border-t-[#f05225] text-start">
+												<div className="pl-[316px] py-2">
+
+													<div>
+														<a href={HeadersInLinks.current} className="text-[#f05225] text-[20px]">
+
+														{
+																targetVisibility ? mainHeaderFunctions(SelectedLinks) : ""
+															}
+															{
+																HeadersInLinks.current
+
+															}
+
+
+														</a>
+
+														<div className="submenu grid text-black dark:text-white  grid-cols-4  gap-y-4 justify-between">
+														{Object.keys(blogData).map((id, index)=>{
+						                                  return(
+															<a key={id} href={`blogs\?id=${blogData[index]["pk"]}`}>{blogData[index]["fields"]["title"]} </a>  
+														  )
+						                                   
+												         })}
+
+                                                              {/* {
+																selectedLinkIndex.current.map((element) => {
+																	return (
+																		<>
+																			<p>
+																				{element.name}
+																			</p>
+																		</>
+																	)
+																})
+
+
+															} */}
+														</div>
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+							</>
+						)
+
+					}
+					)
+
+
+					}
 				</ul>
 				
 			</div>
 		
 			
-
-			<div className="bg-gradient-to-r from-[#0038ff] via-[#3a86ff] to-[#6dccff] p-[2px] text-lg rounded-lg relative">
+            <div className="flex flex-col">
+			<div className="bg-gradient-to-r from-[#0038ff] via-[#3a86ff] to-[#6dccff] p-[2px] ml-[60px] md:ml-0 text-lg rounded-lg relative">
 					<div className=" dark:bg-[#101010] bg-white rounded-md px-1 lg:px-3 py-0.5 flex items-center justify-center ">
 						<div className="hidden lg:block" id="searchBox">
 							<input
 								type="text"
 								placeholder="Search"
+								value={search}
 								className="lg:bg-transparent dark:bg-[#101010] bg-white rounded-lg pl-2 pr-10 lg:p-0 py-1 lg:py-0 outline-none"
-								onChange={(e)=>setSearch(e.target.value)
+								onChange={(e)=>handleChange(e.target.value)
 							}
 							/>
 							<CgClose
@@ -186,9 +391,9 @@ const Navbar = ({ setTheme, theme, props }) => {
 							/>
 						</div>
 						{/* Search icon svg */}
-						<div
+						<div 
 							className={
-								"cursor-pointer "
+								"cursor-pointer"
 							}
 							onClick={() => {
 								if (window.innerWidth < 640) {
@@ -254,8 +459,15 @@ const Navbar = ({ setTheme, theme, props }) => {
 							</svg>
 						</div>
 					</div>
-				</div> 
-
+			</div> 
+			<div className="results-list text-black dark:text-white dark:bg-[#101010] bg-white fixed top-16 ">
+               {results.map((result, id)=>{
+				return (
+					<p className="result py-[6px] px-[10px]" key={id}>{result.name}</p>
+				)
+			   })}
+			</div>
+            </div>
 				<div className="flex px-3 items-center gap-5">
 				<div className="cursor-pointer">
 					{theme === "light" ? (

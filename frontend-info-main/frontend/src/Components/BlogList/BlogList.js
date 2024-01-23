@@ -24,6 +24,7 @@ const BlogList = (props) => {
   }, []);
 
   return (
+    
     <div className="my-5 flex flex-row flex-wrap items-center justify-center gap-x-10 gap-y-5 lg:px-20 px-10 w-full">
       {Object.keys(blogData).map((id, index) => {
         { console.log(blogData[index]) } return (
@@ -42,7 +43,7 @@ const BlogList = (props) => {
               data-aos-once="false"
               data-aos-anchor-placement="top-center"
             >
-              <div class="w-[260px] h-fit p-6 rounded-md">
+              <div class="w-[260px] h-[380px] p-3 rounded-md">
                 <div className="flex flex-row justify-between  items-center">
                   <div className="flex flex-row justify-start items-center space-x-3">
                     <img
@@ -60,7 +61,7 @@ const BlogList = (props) => {
                     </h5>
                   </div>
                 </div>
-                <div className="my-6 h-fit overflow-hidden rounded-lg">
+                <div className="mt-4 mb-2 h-fit overflow-hidden rounded-lg">
                   <img
                     className="w-full h-[50%] mb-1 rounded-md transition duration-300 ease-in-out hover:scale-105"
                     src={process.env.REACT_APP_SERVER + "/media/" + blogData[index]["fields"]["thumbnail"]}
@@ -77,7 +78,7 @@ const BlogList = (props) => {
                     {blogData[index]["fields"]["chead0"].slice(0, 100)}...
                   </p>
                 </div>
-                <a href={`blogs\?id=${blogData["pk"]}`} className=" text-orange-400 font-semibold text-end ">
+                <a key={id} href={`blogs\?id=${blogData[index]["pk"]}`} className=" text-orange-400 font-semibold text-end ">
                   <h1 className="text-subtitle">Read More</h1>
                 </a>
               </div>

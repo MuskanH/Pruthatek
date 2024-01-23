@@ -2,7 +2,7 @@ import datetime
 from importlib.resources import contents
 from multiprocessing import AuthenticationError
 import os
-from turtle import mode, title
+# from turtle import mode, title
 from django.db import models
 
 # Create your models here.
@@ -16,8 +16,18 @@ def filepath(request, filename):
     return os.path.join('uploads/', filename)
 
 
+class Category(models.Model):
+    categoryTitle = models.CharField(max_length=100)
+    slug = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.categoryTitle
+
+
+
 class Post(models.Model):
     sno=models.AutoField(primary_key=True)
+    Category = models.CharField(max_length=255, default="null")
     title=models.CharField(max_length=255)
     author=models.CharField(max_length=14)
     slug=models.CharField(max_length=130)

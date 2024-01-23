@@ -5,6 +5,7 @@ import Navbar from "../Comon/Navbar";
 import "./DetailedBlog.css";
 import axios from "axios";
 import ReactPlayer from "react-player/youtube";
+import SideContent from "../SideContent/SideContent";
 
 const DetailedBlog = (props) => {
   const [blogData, setBlogData] = useState([]);
@@ -42,6 +43,7 @@ const DetailedBlog = (props) => {
   // const blogData = props.location.state
   return (
     <>
+    <SideContent/>
       <div className='pt-4 px-6 md:px-10 lg:px-10  '>
         <div className="lg:w-[55vw] mx-auto my-[3vw]">
 

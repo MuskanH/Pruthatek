@@ -23,10 +23,12 @@ import PublishedBlogs from "./Components/PublishedBlogs/PublishedBlogs";
 import Drafts from "./Components/Drafts/Drafts";
 import DeletedBlogs from "./Components/DeletedBlogs/DeletedBlogs";
 import ApprovedBlogs from "./Components/ApprovedBlogs/ApprovedBlogs";
+import SideContent from "./Components/SideContent/SideContent";
+import Cookies from "./Components/Cookies/Cookies";
 
 function App() {
 
-	const [theme, setTheme] = useState("dark")
+	const [theme, setTheme] = useState("light")
 
 	useEffect(() => {
 		if (theme === "dark") {
@@ -65,9 +67,11 @@ function App() {
 					<Route path="/admin/draft" element={<Drafts theme={theme} />} /> 
 					<Route path="/admin/deleted" element={<DeletedBlogs theme={theme} />} />
 					<Route path="/admin/approved" element={<ApprovedBlogs theme={theme} />} />
+					<Route path="/sidecontent" element={<SideContent theme={theme} />} />
 					{/* <Route path="admin/login" element={<AdminLogin />} /> */}
 					{/* <Route path="home" element={<Home />} /> */}
 				</Routes>
+				<Cookies/>
 				<Footer theme={theme} />
 			</Router>
 		</div>

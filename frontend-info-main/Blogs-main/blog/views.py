@@ -43,3 +43,44 @@ def isDeletedCheck(request):
     print("done")
     return HttpResponse(data, content_type="application/json")
 
+def cars(request):
+    allpost = Post.objects.filter(Category = "Cars").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
+
+def education(request):
+    allpost = Post.objects.filter(Category = "Education").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
+
+def money(request):
+    allpost = Post.objects.filter(Category = "Money").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
+
+def news(request):
+    allpost = Post.objects.filter(Category = "New & Culture").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
+
+def science(request):
+    allpost = Post.objects.filter(Category = "Science").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
+
+def tech(request):
+    allpost = Post.objects.filter(Category = "Tech").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
+
+def other(request):
+    allpost = Post.objects.filter(Category = "Other").all()
+    data = serializers.serialize("json", allpost)
+    print("cars")
+    return HttpResponse(data, content_type="application/json")
