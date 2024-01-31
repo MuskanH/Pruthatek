@@ -121,11 +121,14 @@ if (loading) {
             </div>
             <div className='flex justify-between dark:text-white text-black'>
                <div className='flex flex-col pl-4'>
-               <p className='text-[14px] font-semibold pt-[30px] text-start lg:w-[154px] w-[154px] md:w-[150px] truncate'>{product.pname}</p>
+               <p className='text-[14px] font-semibold pt-[30px] text-start lg:w-[154px] w-[154px] md:w-[150px] truncate'>{blogData[0]['fields']['head1']}</p>
                <p className='text-start text-[14px] text-[#737373]'>{product.pdesc}</p>
                </div>
-               <div className='border-[#f05225] border-[1px] flex justify-center items-center text-[12px] lg:ml-[34px] md:ml-[0px] ml-[10px] my-8  rounded bg-transparent w-[110px] lg:w-[140px] md:w-[100px] h-[32px]'>
+               <div>
+               <div className='border-[#f05225] border-[1px] flex justify-center items-center text-[12px] lg:ml-[34px] md:ml-[0px] ml-[10px] mt-8  rounded bg-transparent w-[110px] lg:w-[140px] md:w-[100px] h-[32px]'>
                 <a href={product.plink} target="_blank">&#8377;{product.pprice}</a> 
+               </div>
+               <a href="#{{blogData[0]['fields']['head1']}}" className="text-[12px] lg:ml-[64px] md:ml-[15px] ml-[30px] mt-6">View Details</a>
                </div>
             </div>
           

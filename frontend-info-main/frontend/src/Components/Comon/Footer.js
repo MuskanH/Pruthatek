@@ -7,7 +7,7 @@ function Footer({ theme }) {
 
 	return (
 		    <>
-			<div className='flex justify-between flex-col lg:flex-row w-full px-4 py-4 dark:bg-black bg-white'>
+			<div className='flex  justify-between flex-col lg:flex-row w-full px-5 py-4 dark:bg-black bg-white'>
 			<a href="/" >
 				<div className="flex flex-row justify-center items-center">
 					<div className="w-32 lg:pb-2">
@@ -49,12 +49,16 @@ function Footer({ theme }) {
 				<a className='lg:text-[1vw] block my-[1.3vw] dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="#">Cookie Settings</a>
 				<a className='lg:text-[1vw] block my-[1.3vw] dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="#">Do Not Sell My Information</a>
 			</div> */}
-			<div className="lg:w-[16vw]">
-				<h2 className="font-semibold lg:text-[1vw]">FOLLOW</h2>
-				<div className="flex justify-between flex-row lg:text-[1.4vw] mt-[2vw]">
-					<FaFacebookF className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-[rgb(0,38,255)] transition-transform duration-[600ms]" title="visit our Facebook Page" />
+			<div className="lg:w-[16vw] my-5 lg:my-0">
+				
+				<div className="lg:text-[1.4vw] md:mt-0 mt-[2vw] px-11 lg:px-0 md:px-56">
+					<div className='mb-4'>
+				     <h2 className="font-semibold lg:text-[1vw]">FOLLOW</h2>
+				   </div>
+				   <div className='flex justify-between flex-row lg:text-[1.4vw] mt-[2vw]'>
+					<a href='https://www.facebook.com/pruthatek' target='_blank'><FaFacebookF className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-[rgb(0,38,255)] transition-transform duration-[600ms]" title="visit our Facebook Page" /></a>
 					<FaInstagram className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-[rgb(255,0,200)] transition-transform duration-[600ms]" title="visit our Instagram Page" />
-					<FaLinkedin className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-[rgb(0,38,255)] transition-transform duration-[600ms]" title="visit our LinkedIn Page" />
+					<a href='https://www.linkedin.com/company/pruthatek/' target='_blank'><FaLinkedin className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-[rgb(0,38,255)] transition-transform duration-[600ms]" title="visit our LinkedIn Page" /></a>
 					{/* {theme === "light" ? (
 						<svg
 							width="12" height="12" viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg"
@@ -83,13 +87,13 @@ function Footer({ theme }) {
 						theme === "light" ? (
 							<img
 								src="/static/img/logoblack.png"
-								className="md:w-[3%] md:h-[3%] lg:w-[8%] lg:h-[8%]  w-[5%] h-[5%]"
+								className="md:w-[5%] md:h-[5%] lg:w-[8%] lg:h-[8%]  w-[5%] h-[5%]"
 								alt="White Theme"
 							/>
 						) : (
 							<img
 								src="/static/img/logoblack.png"
-								className="md:w-[3%] md:h-[3%] lg:w-[8%] lg:h-[8%]  w-[5%] h-[5%] filter brightness-0 invert"
+								className="md:w-[5%] md:h-[5%] lg:w-[8%] lg:h-[8%]  w-[5%] h-[5%] filter brightness-0 invert"
 								alt="White Theme"
 							/>
 
@@ -103,6 +107,7 @@ function Footer({ theme }) {
 					{/* <img src='/static/img/logoblack.png' className='w-[10%] h-[10%]  ' /> */}
 					{/* <BsTwitterX className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-[rgb(0,38,255)] transition-transform duration-[600ms]" title="visit our Twitter Page" /> */}
 					<FaYoutube className="hover:cursor-pointer hover:translate-y-[-5px] hover:text-red-500 transition-transform duration-[600ms]" title="visit our Youtube Page" />
+				    </div>
 				</div>
 				
 			</div>

@@ -43,7 +43,7 @@ const BlogList = (props) => {
               data-aos-once="false"
               data-aos-anchor-placement="top-center"
             >
-              <div class="w-[260px] h-[380px] p-3 rounded-md">
+              <div className="w-[260px] h-[380px] p-3 rounded-md">
                 <div className="flex flex-row justify-between  items-center">
                   <div className="flex flex-row justify-start items-center space-x-3">
                     <img

@@ -15,6 +15,8 @@ urlpatterns = [
     path('news/', views.news, name="news"),
     path('wellness/', views.news, name="wellness"),
     path('home/', views.news, name="home"),
+    path('searchDatabase/', views.searchPosts, name="searchPosts"),
+    path('adfetch/' , views.ad_fetch, name= "ad_fetch"),
 ]
 
 

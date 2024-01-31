@@ -25,6 +25,16 @@ import DeletedBlogs from "./Components/DeletedBlogs/DeletedBlogs";
 import ApprovedBlogs from "./Components/ApprovedBlogs/ApprovedBlogs";
 import SideContent from "./Components/SideContent/SideContent";
 import Cookies from "./Components/Cookies/Cookies";
+import Cars from "./Components/BlogCategories/Cars/Cars";
+import Education from "./Components/BlogCategories/Education/Education";
+import HomeBlog from "./Components/BlogCategories/Home/HomeBlog";
+import Wellness from "./Components/BlogCategories/Wellness/Wellness";
+import News from "./Components/BlogCategories/News/News";
+import Other from "./Components/BlogCategories/Other/Other";
+import Science from "./Components/BlogCategories/Science/Science";
+import Tech from "./Components/BlogCategories/Tech/Tech";
+import Money from "./Components/BlogCategories/Money/Money";
+
 
 function App() {
 
@@ -49,6 +59,7 @@ function App() {
 	return (
 		<div className="bg-white dark:bg-[#101010] text-black dark:text-white">
 			<Router>
+				
 				<Navbar setTheme={setTheme} theme={theme} />
 				<MobileNavbar />
 				<Routes>
@@ -68,11 +79,21 @@ function App() {
 					<Route path="/admin/deleted" element={<DeletedBlogs theme={theme} />} />
 					<Route path="/admin/approved" element={<ApprovedBlogs theme={theme} />} />
 					<Route path="/sidecontent" element={<SideContent theme={theme} />} />
+					<Route path="/Cars" element={<Cars theme={theme} />} />
+					<Route path="/Education" element={<Education theme={theme} />} />
+					<Route path="/Home" element={<HomeBlog theme={theme} />} />
+					<Route path="/Money" element={<Money theme={theme} />} />
+					<Route path="/Wellness" element={<Wellness theme={theme} />} />
+					<Route path="/News" element={<News theme={theme} />} />
+					<Route path="/Other" element={<Other theme={theme} />} />
+					<Route path="/Science" element={<Science theme={theme} />} />
+					<Route path="/Tech" element={<Tech theme={theme} />} />
 					{/* <Route path="admin/login" element={<AdminLogin />} /> */}
 					{/* <Route path="home" element={<Home />} /> */}
 				</Routes>
 				<Cookies/>
 				<Footer theme={theme} />
+				
 			</Router>
 		</div>
 	);
