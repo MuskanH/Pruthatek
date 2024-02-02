@@ -15,6 +15,12 @@ def filepath(request, filename):
     filename = "%s%s" % (timeNow, old_filename)
     return os.path.join('uploads/', filename)
 
+class BlogCategory(models.Model):
+    slug = models.CharField(max_length=255)
+    category_title = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.category_title
 
 
 class Post(models.Model):

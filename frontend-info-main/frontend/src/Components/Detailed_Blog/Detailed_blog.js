@@ -64,13 +64,13 @@ const DetailedBlog = (props) => {
   // console.log(adData[0].pk)
 
 
- const onclick = (index) =>{
-  setLinkId (adData[index]["fields"]["product_name"]);
-  // setTimeout(() => {
-  //   setLinkId("")
-  // }, 1000);
- }
- console.log(linkId)
+  const onclick = (index) => {
+    setLinkId(adData[index]["fields"]["product_name"]);
+    // setTimeout(() => {
+    //   setLinkId("")
+    // }, 1000);
+  }
+  console.log(linkId)
   return (
     <>
       <div className='lg:flex lg:flex-row flex flex-col justify-center'>
@@ -125,7 +125,7 @@ const DetailedBlog = (props) => {
               <div key={id} className='lg:w-[400px] h-[100px] w-[340px] md:w-[314px] mx-6 mt-6 mb-2 flex border-b-slate-300 border-b-[1px]'>
                 <div className='pt-6'>
                   <div className='w-[50px] h-[50px]'>
-                    <img src={adData[index]['fields']['link']} />
+                    <img src={process.env.REACT_APP_SERVER + "/media/" + adData[index]['fields']['image']} />
                   </div>
                 </div>
                 <div className='flex justify-between dark:text-white text-black'>
@@ -137,8 +137,8 @@ const DetailedBlog = (props) => {
                     <div className='border-[#f05225] border-[1px] flex justify-center items-center text-[12px] lg:ml-[34px] md:ml-[0px] ml-[10px] mt-8  rounded bg-transparent w-[110px] lg:w-[140px] md:w-[100px] h-[32px]'>
                       <a href={adData[index]['fields']['link']} target="_blank">&#8377;{adData[index]['fields']['price']}</a>
                     </div>
-                    <a href={`#${adData[index]["fields"]["product_name"]}`} onClick={() => onclick(index)}
-                    className="text-[12px] lg:ml-[64px] md:ml-[15px] ml-[30px] mt-6">View Details</a>
+                    <a href={`#${index}`} onClick={() => onclick(index)}
+                      className="text-[12px] lg:ml-[64px] md:ml-[15px] ml-[30px] mt-6">View Details</a>
                   </div>
                 </div>
 
@@ -188,41 +188,39 @@ const DetailedBlog = (props) => {
 
           </div>
 
-          <div className="py-5">
+          {/* paragraph zero */}
+          <div id="0" className="py-5">
             <p className="dark:text-white  text-justify text-[16px] md:px-10 lg:px-0 font-normal leading-normal">
               <strong className='dark:text-white'> {blogData[0]['fields']['head0']} </strong>{blogData[0]['fields']['chead0']}
             </p>
+            <div className="flex items-center justify-center my-5">
+              <img src={process.env.REACT_APP_SERVER + "/media/" + blogData[0]["fields"]["cimages0"]} />
+            </div>
           </div>
+          {/* paragraph zero end*/}
 
-          {/* images  */}
-          
-         <div id={linkId}>
-          <div className="flex items-center justify-center my-5">
-            <img src={process.env.REACT_APP_SERVER + "/media/" + blogData[0]["fields"]["cimages0"]} />
-          </div>
-
-          <div className="py-5 dark:text-white ">
+          {/* paragraph one */}
+          <div id="1" className="py-5 dark:text-white ">
             <p className="dark:text-white text-justify text-[16px] font-normal md:px-10 lg:px-0 leading-normal">
               <strong> {blogData[0]['fields']['head1']}</strong> {blogData[0]['fields']['chead1']}
             </p>
+            <div className="flex items-center justify-center my-5">
+              <img src={process.env.REACT_APP_SERVER + "/media/" + blogData[0]["fields"]["cimages1"]} />
+            </div>
           </div>
-          </div>
-          {/* images  */}
-         <div id={linkId}>
-          <div className="flex items-center justify-center my-5">
-            <img src={process.env.REACT_APP_SERVER + "/media/" + blogData[0]["fields"]["cimages1"]} />
-          </div>
-          <div className=" py-5  ">
+          {/* paragraph one end*/}
+
+
+          {/* paragraph two*/}
+          <div id="2" className=" py-5  ">
             <p className=" text-justify text-[16px] font-normal md:px-10 lg:px-0 leading-normal dark:text-white">
               <strong className="dark:text-white"> {blogData[0]['fields']['head2']}</strong> {blogData[0]['fields']['chead2']}
             </p>
+            <div className="flex items-center justify-center my-5">
+              <img src={process.env.REACT_APP_SERVER + "/media/" + blogData[0]["fields"]["cimages2"]} />
+            </div>
           </div>
-          </div>
-          {/* images  */}
-
-          <div className="flex items-center justify-center my-5">
-            <img src={process.env.REACT_APP_SERVER + "/media/" + blogData[0]["fields"]["cimages2"]} />
-          </div>
+          {/* paragraph two end*/}
 
           {/* video */}
 

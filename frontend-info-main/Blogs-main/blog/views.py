@@ -57,6 +57,12 @@ def isDeletedCheck(request):
     print("done")
     return HttpResponse(data, content_type="application/json")
 
+def fetch_category(request):
+    category = BlogCategory.objects.all()
+    data = serializers.serialize("json", category)
+    print("category done")
+    return HttpResponse(data, content_type="application/json")
+
 def cars(request):
     allpost = Post.objects.filter(Category = "Cars").all()
     data = serializers.serialize("json", allpost)

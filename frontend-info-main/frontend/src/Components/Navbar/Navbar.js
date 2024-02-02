@@ -10,15 +10,7 @@ const Navbar = ({ setTheme, theme, props }) => {
 	const [blogData, setBlogData] = useState([]);
 
 	const [searchBlog, setSearchBlog] = useState([]);
-	// useEffect(() => {
-	// 	axios
-	// 		.get(process.env.REACT_APP_SERVER + "/api/categorySideBar/")
-	// 		.then((data) => {
-
-	// 			setSearchBlog(JSON.parse(localStorage.getItem("posts")));
-	// 		})
-	// 		.catch((error) => console.log(error));
-	// }, []);
+	const [category, setCategory] = useState([]);
 
 	//language
 	const [isScrolled, setIsScrolled] = useState();
@@ -65,22 +57,19 @@ const Navbar = ({ setTheme, theme, props }) => {
 
 
 	function mainLinkFunctions(e) {
-
-
 		let ad = document.querySelector("#selc");
-
 		let j = e.target.innerHTML;
 
-
 		if (j == "Cars" || j == "Education" || j == "Money" || j == "News/Culture" || j == "Science" || j == "Tech" || j == "Wellness" || j == "Home" || j == "Other" || j == "Voitures") {
-			setTargetVisibility(true);
-			setSelectedLinks(j);
+			setTargetVisibility(!targetVisibility);
+			setSelectedLinks(j); 
 		}
 		else {
+			setTargetVisibility(targetVisibility);
 			setSelectedLinks('');
-			setTargetVisibility(false);
 		}
 	}
+
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -99,7 +88,24 @@ const Navbar = ({ setTheme, theme, props }) => {
 		fetchData();
 	}, []);
 
-	
+	useEffect(() => {
+		const fetchcat = async () => {
+			try{
+				const responsecat = await axios.get(
+					process.env.REACT_APP_SERVER + "/blog/fetchcategory/"
+				);
+				const fetchcategorydata = responsecat.data;
+				console.log(fetchcategorydata);
+				setCategory(fetchcategorydata);
+			}
+			catch(error){
+				console.log(error);
+			}
+		};
+		fetchcat();
+	}, []);
+
+
 
 	function mainHeaderFunctions(a) {
 
@@ -265,67 +271,43 @@ const Navbar = ({ setTheme, theme, props }) => {
 					</div>
 				</a>
 
-				<ul className="lg:flex flex-row  gap-x-9  whitespace-nowrap noscrollbar hidden">
+				<div className="lg:flex flex-row  gap-x-9  whitespace-nowrap noscrollbar hidden">
 					{links.map((link) => {
 						return (
 							<>
-
-								<div onClick={(e) => mainLinkFunctions(e)} className="">
+								<div onClick={(e) => mainLinkFunctions(e)} className="relative">
 									<div id="parsele"
 										className="text-[16px] cursor-pointer relative after:content-[''] after:w-0 after:h-[2px] after:absolute after:-bottom-[5px] after:left-0 after:bg-gradient-to-r after:from-[#f05225] after:to-[#eea820] after:transition-all after:duration-300 hover:after:w-full">
 										{link.select}
 									</div>
 
 
-									<div id="selc" className={`${targetVisibility ? "" : "hid"}`}>
-										<div className="fixed top-16 left-0 right-0 bottom-0" >
+									<div id="selc" className={`fixed top-16 left-0 right-0 bottom-0 text-black dark:text-white bg-white dark:bg-[#101010] drop-shadow-md border-2 border-x-transparent border-b-transparent border-t-[#f05225] text-start pl-[286px] py-2 transiction-all duration-300 h-fit max-h-[400px] ${targetVisibility? "scale-y-90 opacity-100" : "scale-y-0 opacity-0" }`}>
+										<a href={HeadersInLinks.current} className="text-[#f05225] font-bold text-start text-[20px]">
+											{
+												targetVisibility ? mainHeaderFunctions(SelectedLinks) : ""
+											}
+											{
+												HeadersInLinks.current
+											}
+										</a>
 
-											<div className="text-black dark:text-white bg-white dark:bg-[#101010] border-2 border-x-transparent border-b-transparent border-t-[#f05225] text-start">
-												<div className="pl-[286px] py-2">
-
-													<div>
-														<a href={HeadersInLinks.current} className="text-[#f05225] text-start text-[20px]">
-
-															{
-																targetVisibility ? mainHeaderFunctions(SelectedLinks) : ""
-															}
-															{
-																HeadersInLinks.current
-
-															}
-
-
-														</a>
-
-														<div className="submenu grid text-black dark:text-white  grid-cols-4  gap-y-4 justify-between">
-															{Object.keys(blogData).map((id, index) => {
-																if (blogData[index]["fields"].Category == SelectedLinks) {
-																	return (
-																		<a key={id} href={`blogs\?id=${blogData[index]["pk"]}`}>{blogData[index]["fields"]["title"]} </a>
-																	)
-																}
-															})}
-														</div>
-
-													</div>
-
-												</div>
-											</div>
+										<div className="submenu grid text-black dark:text-white  grid-cols-4 pt-3 gap-y-4 justify-between">
+											{Object.keys(blogData).map((id, index) => {
+												if (blogData[index]["fields"].Category == SelectedLinks) {
+													return (
+														<a key={id} href={`blogs\?id=${blogData[index]["pk"]}`}>{blogData[index]["fields"]["title"]} </a>
+													)
+												}
+											})}
 										</div>
 									</div>
 
 								</div>
-
-
 							</>
-						)
-
-					}
-					)
-
-
-					}
-				</ul>
+						)}
+					)}
+				</div>
 
 			</div>
 
@@ -362,7 +344,8 @@ const Navbar = ({ setTheme, theme, props }) => {
 									className="lg:hidden absolute right-[6px] top-1/2 -translate-y-1/2 bg-white dark:bg-[#101010]"
 									size={25}
 									color={theme === "dark" ? "#ffffff" : "#000000"}
-									onClick={() => { setSearchBlog([]);
+									onClick={() => {
+										setSearchBlog([]);
 										document
 											.getElementById("searchBox")
 											.setAttribute("class", "hidden");
@@ -440,17 +423,17 @@ const Navbar = ({ setTheme, theme, props }) => {
 							{/* Search icon svg end */}
 						</div>
 					</div>
-                     {/* Search Result */}
+					{/* Search Result */}
 					<div id="searchOverlay" className="absolute md:top-[40px] top-24 md:right-0 md:w-[269px] w-[227px] scale-y-0 opacity-0 origin-top  mt-5 bg-white/90 backdrop-blur rounded-lg transition-all duration-300 shadow-lg z-50">
 						{searchBlog.map((id, index) => (
-							<a href={`blogs\?id=${searchBlog[index]["pk"]}` } key={id} className="flex items-center gap-8 px-2 py-2 border-b border-[rgba(166,166,166,0.3)] last-of-type:border-none">
+							<a href={`blogs\?id=${searchBlog[index]["pk"]}`} key={id} className="flex items-center gap-8 px-2 py-2 border-b border-[rgba(166,166,166,0.3)] last-of-type:border-none">
 								<div className="flex items-center gap-2">
-									<a href={`blogs\?id=${searchBlog[index]["pk"]}` } key={id} className="text-black discriptionTruncate-1 text-kijeka-blue text-sm font-medium w-full">{searchBlog[index]["title"]}</a>
+									<a href={`blogs\?id=${searchBlog[index]["pk"]}`} key={id} className="text-black discriptionTruncate-1 text-kijeka-blue text-sm font-medium w-full">{searchBlog[index]["title"]}</a>
 								</div>
 							</a>
 						))}
 
-                    
+
 						{() => {
 							if (searchBlog.length > 0) {
 								return <hr />;
@@ -458,7 +441,7 @@ const Navbar = ({ setTheme, theme, props }) => {
 						}}
 
 					</div>
-					   {/* Search Result End*/}
+					{/* Search Result End*/}
 				</div>
 
 			</div>

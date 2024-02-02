@@ -5,3 +5,4 @@ from blog.models import *
 
 admin.site.register(Post)
 admin.site.register(Ad)
+admin.site.register(BlogCategory)
