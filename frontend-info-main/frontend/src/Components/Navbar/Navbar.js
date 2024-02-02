@@ -16,6 +16,11 @@ const Navbar = ({ setTheme, theme, props }) => {
 	const [isScrolled, setIsScrolled] = useState();
 	const [selectedLanguage, setSelectedLanguage] = useState("EN");
 
+	const [targetVisibility, setTargetVisibility] = useState(false);
+	const [SelectedLinks, setSelectedLinks] = useState("");
+	let selectedLinkIndex = useRef([]);
+	let HeadersInLinks = useRef([]);
+
 	window.onload = function () {
 
 
@@ -48,29 +53,6 @@ const Navbar = ({ setTheme, theme, props }) => {
 
 	// togglenav
 
-
-	const [targetVisibility, setTargetVisibility] = useState(false);
-	const [SelectedLinks, setSelectedLinks] = useState("");
-	let selectedLinkIndex = useRef([]);
-	let HeadersInLinks = useRef([]);
-
-
-
-	function mainLinkFunctions(e) {
-		let ad = document.querySelector("#selc");
-		let j = e.target.innerHTML;
-
-		if (j == "Cars" || j == "Education" || j == "Money" || j == "News/Culture" || j == "Science" || j == "Tech" || j == "Wellness" || j == "Home" || j == "Other" || j == "Voitures") {
-			setTargetVisibility(!targetVisibility);
-			setSelectedLinks(j); 
-		}
-		else {
-			setTargetVisibility(targetVisibility);
-			setSelectedLinks('');
-		}
-	}
-
-
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -97,6 +79,7 @@ const Navbar = ({ setTheme, theme, props }) => {
 				const fetchcategorydata = responsecat.data;
 				console.log(fetchcategorydata);
 				setCategory(fetchcategorydata);
+				console.log(category);
 			}
 			catch(error){
 				console.log(error);
@@ -105,13 +88,27 @@ const Navbar = ({ setTheme, theme, props }) => {
 		fetchcat();
 	}, []);
 
-
+	function mainLinkFunctions(e) {
+		let clickedCategory = e.target.innerHTML;
+		console.log(clickedCategory);
+	
+		// Check if the clicked category is the currently selected one
+		if (SelectedLinks === clickedCategory) {
+			// If it is, toggle the visibility
+			setTargetVisibility(!targetVisibility);
+		} else {
+			// If it's a different category, update the visibility and selectedLinks
+			setTargetVisibility(true);
+			setSelectedLinks(clickedCategory);
+		}
+	}
 
 	function mainHeaderFunctions(a) {
 
 		let tempObjectStore;
 
-		links.map((element, index) => {
+
+		category.map((element, index) => {
 
 			if (element.select == a) {
 
@@ -131,130 +128,130 @@ const Navbar = ({ setTheme, theme, props }) => {
 
 	// togglenav end
 
-	const navbarLinks = [
-		["Cars", "#"],
-		["Education", "#"],
-		["Wellness", "#"],
-		["Tech", "#"],
-		["Science", "#"],
-		["News & Culture", "#"],
-		["Money", "#"],
-		["Home", "#"],
-		["Other", "#"],
-	];
+	// const navbarLinks = [
+	// 	["Cars", "#"],
+	// 	["Education", "#"],
+	// 	["Wellness", "#"],
+	// 	["Tech", "#"],
+	// 	["Science", "#"],
+	// 	["News & Culture", "#"],
+	// 	["Money", "#"],
+	// 	["Home", "#"],
+	// 	["Other", "#"],
+	// ];
 
-	const links =
-		[
-			{
-				select: "Cars",
-				submenu: true,
-				subl:
-				{
-					Head: "Cars",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
-					]
-				}
-			},
+	// const links =
+	// 	[
+	// 		{
+	// 			select: "Cars",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Cars",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
 
-			{
-				select: "Education",
-				submenu: true,
-				subl:
-				{
-					Head: "Education",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
-					]
-				}
-			},
+	// 		{
+	// 			select: "Education",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Education",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
 
-			{
-				select: "Money",
-				submenu: true,
-				subl:
-				{
-					Head: "Money",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 		{
+	// 			select: "Money",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Money",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
+	// 				]
+	// 			}
+	// 		},
 
-			{
-				select: "News/Culture",
-				submenu: true,
-				subl:
-				{
-					Head: "News/Culture",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 		{
+	// 			select: "News/Culture",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "News/Culture",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
-			{
-				select: "Science",
-				submenu: true,
-				subl:
-				{
-					Head: "Science",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
+	// 		{
+	// 			select: "Science",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Science",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
-			{
-				select: "Tech",
-				submenu: true,
-				subl:
-				{
-					Head: "Tech",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
+	// 		{
+	// 			select: "Tech",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Tech",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
-			{
-				select: "Wellness",
-				submenu: true,
-				subl:
-				{
-					Head: "Wellness",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
+	// 		{
+	// 			select: "Wellness",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Wellness",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
-			{
-				select: "Home",
-				submenu: true,
-				subl:
-				{
-					Head: "Home",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
+	// 		{
+	// 			select: "Home",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Home",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
-			{
-				select: "Other",
-				submenu: true,
-				subl:
-				{
-					Head: "Other",
-					slink: [
-						{ name: "Blog one", link: "/Cars" },
+	// 				]
+	// 			}
+	// 		},
+	// 		{
+	// 			select: "Other",
+	// 			submenu: true,
+	// 			subl:
+	// 			{
+	// 				Head: "Other",
+	// 				slink: [
+	// 					{ name: "Blog one", link: "/Cars" },
 
-					]
-				}
-			},
-		]
+	// 				]
+	// 			}
+	// 		},
+	// 	]
 
 
 	return (
@@ -272,17 +269,17 @@ const Navbar = ({ setTheme, theme, props }) => {
 				</a>
 
 				<div className="lg:flex flex-row  gap-x-9  whitespace-nowrap noscrollbar hidden">
-					{links.map((link) => {
+
+					{category.map((link) => {
 						return (
 							<>
-								<div onClick={(e) => mainLinkFunctions(e)} className="relative">
+								<div onClick={mainLinkFunctions} className="relative">
 									<div id="parsele"
 										className="text-[16px] cursor-pointer relative after:content-[''] after:w-0 after:h-[2px] after:absolute after:-bottom-[5px] after:left-0 after:bg-gradient-to-r after:from-[#f05225] after:to-[#eea820] after:transition-all after:duration-300 hover:after:w-full">
-										{link.select}
+										{link.fields.category_title}
 									</div>
 
-
-									<div id="selc" className={`fixed top-16 left-0 right-0 bottom-0 text-black dark:text-white bg-white dark:bg-[#101010] drop-shadow-md border-2 border-x-transparent border-b-transparent border-t-[#f05225] text-start pl-[286px] py-2 transiction-all duration-300 h-fit max-h-[400px] ${targetVisibility? "scale-y-90 opacity-100" : "scale-y-0 opacity-0" }`}>
+									<div id="selc" className={`fixed top-16 left-0 right-0 bottom-0 text-black dark:text-white bg-white dark:bg-[#101010] drop-shadow-md border-2 border-x-transparent border-b-transparent border-t-[#f05225] text-start pl-[286px] py-2 transiction-all duration-300 h-fit max-h-[400px] ${targetVisibility ? "scale-y-90 opacity-100" : "scale-y-0 opacity-0" }`}>
 										<a href={HeadersInLinks.current} className="text-[#f05225] font-bold text-start text-[20px]">
 											{
 												targetVisibility ? mainHeaderFunctions(SelectedLinks) : ""
@@ -291,7 +288,6 @@ const Navbar = ({ setTheme, theme, props }) => {
 												HeadersInLinks.current
 											}
 										</a>
-
 										<div className="submenu grid text-black dark:text-white  grid-cols-4 pt-3 gap-y-4 justify-between">
 											{Object.keys(blogData).map((id, index) => {
 												if (blogData[index]["fields"].Category == SelectedLinks) {
@@ -302,7 +298,6 @@ const Navbar = ({ setTheme, theme, props }) => {
 											})}
 										</div>
 									</div>
-
 								</div>
 							</>
 						)}

@@ -12,6 +12,7 @@ const MobileNavbar = () => {
 	const [SelectedLinks, setSelectedLinks] = useState("");
 	let selectedLinkIndex = useRef([]);
 	let HeadersInLinks = useRef([]);
+	const [category, setCategory] = useState([]);
 
   
 
@@ -52,11 +53,45 @@ const MobileNavbar = () => {
 		fetchData();
 	}, []);
 
+	useEffect(() => {
+		const fetchcat = async () => {
+			try{
+				const responsecat = await axios.get(
+					process.env.REACT_APP_SERVER + "/blog/fetchcategory/"
+				);
+				const fetchcategorydata = responsecat.data;
+				console.log(fetchcategorydata);
+				setCategory(fetchcategorydata);
+				console.log(category);
+			}
+			catch(error){
+				console.log(error);
+			}
+		};
+		fetchcat();
+	}, []);
+
+	function mainLinkFunctions(e) {
+		let clickedCategory = e.target.innerHTML;
+		console.log(clickedCategory);
+	
+		// Check if the clicked category is the currently selected one
+		if (SelectedLinks === clickedCategory) {
+			// If it is, toggle the visibility
+			setTargetVisibility(!targetVisibility);
+		} else {
+			// If it's a different category, update the visibility and selectedLinks
+			setTargetVisibility(true);
+			setSelectedLinks(clickedCategory);
+		}
+	}
+
 	function mainHeaderFunctions(a) {
 
 		let tempObjectStore;
 
-		links.map((element, index) => {
+
+		category.map((element, index) => {
 
 			if (element.select == a) {
 
@@ -231,15 +266,15 @@ const MobileNavbar = () => {
 			</div>
 			
 			<div className='w-full h-full flex mt-10'>
-				<ul className='flex flex-row overflow-x-scroll gap-5 relative'>
-				{links.map((link) => {
+				<div className='flex flex-row overflow-x-scroll gap-5 relative'>
+				{category.map((link) => {
 						return (
 							<>
 
-								<div onClick={(e) => mainLinkFunctions(e)} className="">
+								<div onClick={mainLinkFunctions} className="">
 									<div id="parsele"
 										className="text-[16px] cursor-pointer">
-										{link.select}
+										{link.fields.category_title}
 									</div>
 
 
@@ -291,7 +326,7 @@ const MobileNavbar = () => {
 
 
 					}
-				</ul>
+				</div>
 
 				
 			</div>
