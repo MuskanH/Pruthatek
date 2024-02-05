@@ -34,6 +34,8 @@ import Other from "./Components/BlogCategories/Other/Other";
 import Science from "./Components/BlogCategories/Science/Science";
 import Tech from "./Components/BlogCategories/Tech/Tech";
 import Money from "./Components/BlogCategories/Money/Money";
+import BlogUploadForm from "./Components/BlogUploadForm/BlogUploadForm";
+import Terms from "./Components/T&C/Terms";
 
 
 function App() {
@@ -88,6 +90,8 @@ function App() {
 					<Route path="/Other" element={<Other theme={theme} />} />
 					<Route path="/Science" element={<Science theme={theme} />} />
 					<Route path="/Tech" element={<Tech theme={theme} />} />
+					<Route path="/bloguploadform" element={<BlogUploadForm theme={theme} />} />
+					<Route path="/terms" element={<Terms theme={theme} />} />
 					{/* <Route path="admin/login" element={<AdminLogin />} /> */}
 					{/* <Route path="home" element={<Home />} /> */}
 				</Routes>
