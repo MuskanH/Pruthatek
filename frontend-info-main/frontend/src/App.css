@@ -45,3 +45,16 @@ html{
   scroll-behavior: smooth;
 }
 
+.rdw-editor-wrapper{
+ 
+  margin: 40px 50px 100px 50px;
+  height: 500px
+}
+
+.rdw-option-wrapper{
+  background: blue;
+}
+
+.rdw-editor-main{
+  border: 2px solid #f1f1f1;
+}

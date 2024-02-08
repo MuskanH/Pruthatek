@@ -116,8 +116,8 @@ function Footer({ theme }) {
 			    <p className="lg:text-[0.9vw] md:text-[1.3vw] text-[1.5vw] my-[0.3vw] text-start">&copy; 2023 PruthaTek.info. All rights reserved.</p>
 			    <p className="lg:text-[0.9vw]  md:text-[1.3vw] text-[1.5vw]  my-[0.3vw] ml-16 text-start">US | France | Germany | Japan | Korea</p>
 				<div className='flex flex-row flex-wrap lg:ml-0 md:ml-8'>
-			    <a className='lg:text-[0.7vw]  md:text-[1vw] text-[1.5vw] text-start lg:mr-4 mr-2 dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="#">Privacy Policy</a>
-				<a className='lg:text-[0.7vw]  md:text-[1vw] text-[1.5vw] text-start lg:mr-4 mr-2 dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="#">Term of Use</a>
+			    <a className='lg:text-[0.7vw]  md:text-[1vw] text-[1.5vw] text-start lg:mr-4 mr-2 dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="/privacy">Privacy Policy</a>
+				<a className='lg:text-[0.7vw]  md:text-[1vw] text-[1.5vw] text-start lg:mr-4 mr-2 dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="/terms">Term of Use</a>
 				<a className='lg:text-[0.7vw]  md:text-[1vw] text-[1.5vw] text-start lg:mr-4 md:mr-2 mr-0 dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="#">Cookie Settings</a>
 				<a className='lg:text-[0.7vw]  md:text-[1vw] text-[1.5vw] text-start  dark:bg-white bg-black bg-clip-text text-transparent tracking-widest hover:bg-gradient-to-r hover:from-[#ffe32d] hover:to-[#ff6d2d] transition-all duration-300' href="#">Do Not Sell My Information</a>
 			    </div>

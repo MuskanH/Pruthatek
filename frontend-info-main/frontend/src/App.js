@@ -36,6 +36,7 @@ import Tech from "./Components/BlogCategories/Tech/Tech";
 import Money from "./Components/BlogCategories/Money/Money";
 import BlogUploadForm from "./Components/BlogUploadForm/BlogUploadForm";
 import Terms from "./Components/T&C/Terms";
+import Privacy from "./Components/Privacy/Privacy";
 
 
 function App() {
@@ -92,6 +93,7 @@ function App() {
 					<Route path="/Tech" element={<Tech theme={theme} />} />
 					<Route path="/bloguploadform" element={<BlogUploadForm theme={theme} />} />
 					<Route path="/terms" element={<Terms theme={theme} />} />
+					<Route path="/privacy" element={<Privacy theme={theme} />} />
 					{/* <Route path="admin/login" element={<AdminLogin />} /> */}
 					{/* <Route path="home" element={<Home />} /> */}
 				</Routes>
